@@ -18,7 +18,7 @@ const DashboardPage = () => {
         <div className="flex items-center space-x-2">
           <Tabs defaultValue="overview" className="space-y-4 w-full">
             <div className='flex items-center justify-between'>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl ">
                     Dashboard
                 </h2>
                 <TabsList className='bg-gradient-to-r from-blue-200 to-violet-200'>
@@ -99,6 +99,9 @@ const DashboardPage = () => {
                 <Card className="col-span-4">
                   <CardHeader>
                     <CardTitle>Overview</CardTitle>
+                    <CardDescription>
+                     No Overview Data Found
+                    </CardDescription>
                   </CardHeader>
                   {/* <CardContent className="pl-2">
                     <Suspense fallback={<div className="h-[350px] flex items-center justify-center">Loading chart...</div>}>
@@ -140,32 +143,34 @@ const DashboardPage = () => {
             </TabsContent>
             <TabsContent value="subscriptions" className="space-y-4">
               <Card className='animate-fade-in'>
-                <CardHeader>
-                  <CardTitle>Your Subscriptions</CardTitle>
+                <CardHeader className='flex flex-col items-center justify-center'>
+                  <CardTitle className='text-xl font-bold'>Your Subscriptions</CardTitle>
                   <CardDescription>
                     Manage your active and past subscriptions.
                   </CardDescription>
                 </CardHeader>
-                {/* <CardContent>
-                  <Suspense fallback={<DashboardSkeleton />}>
+                <CardContent className='flex flex-col items-center justify-center'>
+                    <div className='text-muted-foreground md:text-xl'> No Subscriptions Found</div>
+                  {/* <Suspense fallback={<DashboardSkeleton />}>
                     <SubscriptionsList />
-                  </Suspense>
-                </CardContent> */}
+                  </Suspense> */}
+                </CardContent>
               </Card>
             </TabsContent>
             <TabsContent value="content" className="space-y-4">
               <Card className='animate-fade-in'>
-                <CardHeader>
-                  <CardTitle>Your Content</CardTitle>
+                <CardHeader className='flex flex-col items-center justify-center'>
+                  <CardTitle className='text-xl font-bold'>Your Content</CardTitle>
                   <CardDescription>
                     Manage and monetize your content.
                   </CardDescription>
                 </CardHeader>
-                {/* <CardContent>
-                  <Suspense fallback={<DashboardSkeleton />}>
-                    <ContentList />
-                  </Suspense>
-                </CardContent> */}
+                <CardContent className='flex flex-col items-center justify-center'>
+                    <div className='text-muted-foreground md:text-xl'> No Contents Found</div>
+                  {/* <Suspense fallback={<DashboardSkeleton />}>
+                    <SubscriptionsList />
+                  </Suspense> */}
+                </CardContent>
               </Card>
             </TabsContent>
           </Tabs>

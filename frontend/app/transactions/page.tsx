@@ -34,7 +34,7 @@ const Transactions = () => {
       <section className="py-8 mx-[40px] max-w-full pt-[80px]">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div className="mb-4 md:mb-0">
-            <h1 className="text-3xl font-bold mb-2">Transaction History</h1>
+            <h1 className="text-3xl font-bold mb-2">Transactions History</h1>
             <p className="text-muted-foreground">
               View all your subscriptions and payments
             </p>

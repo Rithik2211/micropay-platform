@@ -2,7 +2,7 @@
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { ethers } from 'ethers';
 import { toast } from 'sonner';
-import { Check } from 'lucide-react';
+import { Check, TriangleAlert } from 'lucide-react';
 
 // Define window.ethereum for TypeScript
 declare global {
@@ -95,7 +95,7 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         <div className='rounded-full p-2 bg-green-600'>
           <Check  className='w-4 h-4 text-white'/>
         </div> Wallet Connected! </div>, {
-        description: `Connected to ${formatAddress(address)}`,
+        description: <div className='text-black'>Connected to {formatAddress(address)}</div>,
         action: {
           label: "Undo",
           onClick: () => console.log("Undo"),
@@ -103,8 +103,11 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       })
     } catch (error) {
       console.error('Error connecting wallet:', error);
-      toast("Connection Failed", {
-        description: "Failed to connect wallet. Please try again.",
+      toast(<div className='flex items-center gap-2'> 
+        <div className='rounded-full p-2 bg-red-600'>
+          <TriangleAlert  className='w-4 h-4 text-white'/>
+        </div> Connection Failed! </div>, {
+        description: <div className='text-black'>Failed to connect wallet. Please try again.</div>,
         action: {
           label: "Undo",
           onClick: () => console.log("Undo"),
@@ -122,8 +125,11 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       disconnectWallet();
     } else {
       setAccount(accounts[0]);
-      toast("Account Changed", {
-        description: `Switched to ${formatAddress(accounts[0])}`,
+      toast(<div className='flex items-center gap-2'> 
+        <div className='rounded-full p-2 bg-yellow-600'>
+          <TriangleAlert  className='w-4 h-4 text-black'/>
+        </div> Account Changed! </div>, {
+        description: <div className='text-black'>Switched to {formatAddress(accounts[0])}</div>,
         action: {
           label: "Undo",
           onClick: () => console.log("Undo"),
@@ -156,8 +162,11 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     setChainId(null);
     setIsConnected(false);
     
-    toast("Wallet Disconnected", {
-        description: 'Your wallet has been disconnected',
+    toast(<div className='flex items-center gap-2'> 
+      <div className='rounded-full p-2 bg-red-600'>
+        <TriangleAlert  className='w-4 h-4 text-white'/>
+      </div> Wallet Disconnected! </div>, {
+        description: <div className='text-black'>Your wallet has been disconnected</div>,
         action: {
           label: "Undo",
           onClick: () => console.log("Undo"),
